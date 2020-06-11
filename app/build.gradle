@@ -57,15 +57,5 @@ dependencies {
     implementation 'com.github.Lvluffy.GeneralDialog:dialoglib:1.1.1'
     /*通用视图*/
     implementation 'com.github.Lvluffy:GeneralView:1.1.9'
-
-    /**retrofit2*/
-
-/*    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
-
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'
-
-    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'*/
-
-
 }
 

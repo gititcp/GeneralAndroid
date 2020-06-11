@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.xiaoxi.indicatorlib.MagicIndicator
+    <com.luffy.indicatorlib.MagicIndicator
         android:id="@+id/magicIndicator"
         android:layout_width="match_parent"
         android:layout_height="@dimen/y50" />

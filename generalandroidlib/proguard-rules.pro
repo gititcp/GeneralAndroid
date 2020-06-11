@@ -17,8 +17,8 @@
 #
 #############################################
 # 实体类
--keep class com.xiaoxi.generalandroidlib.android.model.** { *; }
--keepclassmembers class com.xiaoxi.generalandroidlib.android.model.** { *; }
+-keep class com.luffy.generalandroidlib.android.model.** { *; }
+-keepclassmembers class com.luffy.generalandroidlib.android.model.** { *; }
 
 #############################################
 #
