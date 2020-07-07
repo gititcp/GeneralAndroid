@@ -49,6 +49,11 @@ public class HomeFragment extends BaseListFragment {
     }
 
     @Override
+    public int setTitleStyle() {
+        return 0;
+    }
+
+    @Override
     public int setLayoutView() {
         return R.layout.fragment_home;
     }

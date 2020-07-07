@@ -168,6 +168,13 @@ public interface IBaseLayerTitle {
     int setTitleSize();
 
     /**
+     * 设置标题字体样式
+     *
+     * @return
+     */
+    int setTitleStyle();
+
+    /**
      * 设置更多图标
      *
      * @return

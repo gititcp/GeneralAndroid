@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Typeface;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -285,6 +286,12 @@ public abstract class BaseLayerActivity extends AppCompatActivity implements Vie
         /*设置标题大小*/
         if (setTitleSize() != 0) {
             navTitle.setTextSize(TypedValue.COMPLEX_UNIT_SP, setTitleSize());
+        }
+        /*设置标题样式*/
+        if (setTitleStyle() == 0) {
+            navTitle.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
+        } else {
+            navTitle.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         }
         /*设置更多图标*/
         if (setMoreImg() != 0) {
@@ -635,6 +642,16 @@ public abstract class BaseLayerActivity extends AppCompatActivity implements Vie
      */
     @Override
     public int setTitleSize() {
+        return 0;
+    }
+
+    /**
+     * 设置标题字体样式
+     *
+     * @return
+     */
+    @Override
+    public int setTitleStyle() {
         return 0;
     }
 

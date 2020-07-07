@@ -17,4 +17,9 @@ public abstract class BaseActivity extends BaseLayerActivity {
     public void bindButterKnife(Activity target) {
         ButterKnife.bind(target);
     }
+
+    @Override
+    public int setTitleStyle() {
+        return 0;
+    }
 }
