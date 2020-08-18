@@ -22,8 +22,6 @@ import com.luffy.indicatorlib.buildins.commonnavigator.abs.CommonNavigatorAdapte
 import com.luffy.indicatorlib.buildins.commonnavigator.abs.IPagerIndicator;
 import com.luffy.indicatorlib.buildins.commonnavigator.abs.IPagerTitleView;
 import com.luffy.indicatorlib.buildins.commonnavigator.indicators.LinePagerIndicator;
-import com.luffy.indicatorlib.buildins.commonnavigator.titles.ColorTransitionPagerTitleView;
-import com.luffy.indicatorlib.buildins.commonnavigator.titles.SimplePagerTitleView;
 
 import java.util.ArrayList;
 
@@ -46,11 +44,14 @@ public abstract class BaseLayerTabIndicatorActivity extends BaseLayerActivity im
     private int indicatorBackgroundColor = Color.WHITE;
     private boolean indicatorAdjustMode = true;
     private float indicatorTextSize = 16;
-    private int indicatorTextStyle = Typeface.NORMAL;
+    private float indicatorSelectTextSize = 16;
+    private int indicatorNormalTextStyle = Typeface.NORMAL;
+    private int indicatorSelectedTextStyle = Typeface.BOLD;
     private int indicatorNormalColor = Color.GRAY;
     private int indicatorSelectedColor = ContextCompat.getColor(BaseLayerApplication.getInstance(), R.color.colorPrimary);
     private int indicatorMode = LinePagerIndicator.MODE_WRAP_CONTENT;
     private float indicatorLineHeight = 5;
+    private float indicatorLineWidth = 40;
     private int indicatorColor = ContextCompat.getColor(BaseLayerApplication.getInstance(), R.color.colorPrimary);
 
     @Override
@@ -95,12 +96,23 @@ public abstract class BaseLayerTabIndicatorActivity extends BaseLayerActivity im
 
             @Override
             public IPagerTitleView getTitleView(Context context, final int index) {
-                SimplePagerTitleView simplePagerTitleView = new ColorTransitionPagerTitleView(context);
+//                SimplePagerTitleView simplePagerTitleView = new ColorTransitionPagerTitleView(context);
+//                simplePagerTitleView.setText(tabIndicatorItemModelList.get(index).getName());
+//                simplePagerTitleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getIndicatorTextSize());
+//                simplePagerTitleView.setTypeface(Typeface.defaultFromStyle(getIndicatorTextStyle()));
+//                simplePagerTitleView.setNormalColor(getIndicatorNormalColor());
+//                simplePagerTitleView.setSelectedColor(getIndicatorSelectedColor());
+
+                TabSimplePagerTitleView simplePagerTitleView = new TabColorTransitionPagerTitleView(context);
                 simplePagerTitleView.setText(tabIndicatorItemModelList.get(index).getName());
                 simplePagerTitleView.setTextSize(TypedValue.COMPLEX_UNIT_SP, getIndicatorTextSize());
-                simplePagerTitleView.setTypeface(Typeface.defaultFromStyle(getIndicatorTextStyle()));
+                simplePagerTitleView.setTypeface(Typeface.defaultFromStyle(getIndicatorNormalTextStyle()));
                 simplePagerTitleView.setNormalColor(getIndicatorNormalColor());
                 simplePagerTitleView.setSelectedColor(getIndicatorSelectedColor());
+                simplePagerTitleView.setNormalSize(getIndicatorTextSize());
+                simplePagerTitleView.setSelectedSize(getIndicatorSelectTextSize());
+                simplePagerTitleView.setNormalTextStyle(getIndicatorNormalTextStyle());
+                simplePagerTitleView.setSelectedTextStyle(getIndicatorSelectedTextStyle());
                 simplePagerTitleView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -115,6 +127,7 @@ public abstract class BaseLayerTabIndicatorActivity extends BaseLayerActivity im
                 LinePagerIndicator linePagerIndicator = new LinePagerIndicator(context);
                 linePagerIndicator.setMode(getIndicatorMode());
                 linePagerIndicator.setLineHeight(getIndicatorLineHeight());
+                linePagerIndicator.setRoundRadius(5);
                 linePagerIndicator.setColors(getIndicatorColor());
                 return linePagerIndicator;
             }
@@ -167,12 +180,28 @@ public abstract class BaseLayerTabIndicatorActivity extends BaseLayerActivity im
         this.indicatorTextSize = indicatorTextSize;
     }
 
-    public int getIndicatorTextStyle() {
-        return indicatorTextStyle;
+    public float getIndicatorSelectTextSize() {
+        return indicatorSelectTextSize;
     }
 
-    public void setIndicatorTextStyle(int indicatorTextStyle) {
-        this.indicatorTextStyle = indicatorTextStyle;
+    public void setIndicatorSelectTextSize(float indicatorSelectTextSize) {
+        this.indicatorSelectTextSize = indicatorSelectTextSize;
+    }
+
+    public int getIndicatorNormalTextStyle() {
+        return indicatorNormalTextStyle;
+    }
+
+    public void setIndicatorNormalTextStyle(int indicatorNormalTextStyle) {
+        this.indicatorNormalTextStyle = indicatorNormalTextStyle;
+    }
+
+    public int getIndicatorSelectedTextStyle() {
+        return indicatorSelectedTextStyle;
+    }
+
+    public void setIndicatorSelectedTextStyle(int indicatorSelectedTextStyle) {
+        this.indicatorSelectedTextStyle = indicatorSelectedTextStyle;
     }
 
     public int getIndicatorNormalColor() {
@@ -205,6 +234,14 @@ public abstract class BaseLayerTabIndicatorActivity extends BaseLayerActivity im
 
     public void setIndicatorLineHeight(float indicatorLineHeight) {
         this.indicatorLineHeight = indicatorLineHeight;
+    }
+
+    public float getIndicatorLineWidth() {
+        return indicatorLineWidth;
+    }
+
+    public void setIndicatorLineWidth(float indicatorLineWidth) {
+        this.indicatorLineWidth = indicatorLineWidth;
     }
 
     public int getIndicatorColor() {
