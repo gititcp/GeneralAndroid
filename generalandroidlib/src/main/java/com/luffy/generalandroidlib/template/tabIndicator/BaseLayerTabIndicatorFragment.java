@@ -8,6 +8,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.animation.AccelerateInterpolator;
+import android.view.animation.DecelerateInterpolator;
 
 import com.luffy.generalandroidlib.R;
 import com.luffy.generalandroidlib.android.application.BaseLayerApplication;
@@ -16,6 +18,7 @@ import com.luffy.generalandroidlib.android.fragment.BaseLayerFragmentStatePageAd
 import com.luffy.generalandroidlib.android.model.BaseLayerTabIndicatorItemModel;
 import com.luffy.indicatorlib.MagicIndicator;
 import com.luffy.indicatorlib.ViewPagerHelper;
+import com.luffy.indicatorlib.buildins.UIUtil;
 import com.luffy.indicatorlib.buildins.commonnavigator.CommonNavigator;
 import com.luffy.indicatorlib.buildins.commonnavigator.abs.CommonNavigatorAdapter;
 import com.luffy.indicatorlib.buildins.commonnavigator.abs.IPagerIndicator;
@@ -114,7 +117,11 @@ public abstract class BaseLayerTabIndicatorFragment extends BaseLayerFragment im
                 LinePagerIndicator linePagerIndicator = new LinePagerIndicator(context);
                 linePagerIndicator.setMode(getIndicatorMode());
                 linePagerIndicator.setLineHeight(getIndicatorLineHeight());
-                linePagerIndicator.setRoundRadius(5);
+                linePagerIndicator.setLineWidth(getIndicatorLineWidth());
+                linePagerIndicator.setRoundRadius(UIUtil.dip2px(context, 3));
+                linePagerIndicator.setStartInterpolator(new AccelerateInterpolator());
+                linePagerIndicator.setYOffset(UIUtil.dip2px(context, 6));
+                linePagerIndicator.setEndInterpolator(new DecelerateInterpolator(2.0f));
                 linePagerIndicator.setColors(getIndicatorColor());
                 return linePagerIndicator;
             }
